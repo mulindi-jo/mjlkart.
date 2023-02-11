@@ -36,6 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cache',
+    'category',
 ]
 
 MIDDLEWARE = [
@@ -67,6 +69,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'mjlkart.wsgi.application'
+
+AUTH_USER_MODEL = 'cache.Account'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
