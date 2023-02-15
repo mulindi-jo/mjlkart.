@@ -102,7 +102,7 @@ class DefaultField(models.Model):
     date_deleted = models.DateTimeField(blank=True, null=True)
     is_deleted = models.BooleanField(default=False)
     is_archived = models.BooleanField(default=False)
-    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.DO_NOTHING)
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
         abstract = True
@@ -113,8 +113,8 @@ class DefaultField(models.Model):
         super(DefaultField, self).save()
         return super(DefaultField, self).save()
 
-    def delete(self, using=None, keep_parents=False):
-        self.is_deleted = True
-        self.date_deleted = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
-        self.save()
-        return
+    # def delete(self, using=None, keep_parents=False):
+    #     self.is_deleted = True
+    #     self.date_deleted = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
+    #     self.save()
+    #     return
