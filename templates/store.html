@@ -132,7 +132,12 @@
 						<span class="price">KES {{ product.price|floatformat:0 }}</span>
 					</div>
 				</div>
-				<a href="#" class="btn btn-block btn-primary">Add to cart </a>
+                {% if product.stock <= 0 %}
+                    <a href="{{ product.get_url }}" class="btn btn-block btn-primary">View Details </a>
+                {% else %}
+                    <a href="{% url 'add_to_cart' product.id %}" class="btn btn-block btn-primary">Add to cart </a>
+                {% endif %}
+
 			</figcaption>
 		</figure>
 	</div>

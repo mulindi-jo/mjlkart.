@@ -19,7 +19,7 @@ def store(request, category_slug=None):
         products_count = products.count()
     context = {
         'products': products,
-        'products_count': products_count
+        'products_count': products_count,
     }
     return render(request, 'store.html', context)
 
